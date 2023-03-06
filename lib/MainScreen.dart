@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last, prefer_const_constructors, prefer_interpolation_to_compose_strings
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -16,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   final imagePicker = ImagePicker();
   List predictions = [];
 
-  _getFromGallery() async {
+  getFromGallery() async {
     var image = await imagePicker.getImage(source: ImageSource.gallery);
     if (image == null) {
       return null;
@@ -27,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     detectImage(_image);
   }
 
-  _getFromCamera() async {
+  getFromCamera() async {
     var image = await imagePicker.getImage(source: ImageSource.camera);
     if (image == null) {
       return null;
@@ -74,48 +76,16 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black12,
       appBar: AppBar(
         title: Text(
-          'Children vs Adult',
-          style: TextStyle(color: Colors.yellowAccent),
+          'Classification Between Children and Adults',
+          style: TextStyle(color: Colors.white, fontSize: 18),
         ),
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Color(0xFFF23F44),
       ),
       body: SafeArea(
         child: Column(
           children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _getFromCamera();
-                    },
-                    child: Text('Capture'),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _getFromGallery();
-                    },
-                    child: Text(
-                      'From Gallery',
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-              ],
-            ),
             _loading == false
                 ? Column(
                     children: [
@@ -125,22 +95,55 @@ class _MainScreenState extends State<MainScreen> {
                         child: Image.file(_image),
                       ),
                       Text(
-                        'Looks like it\'s a ' +
-                            predictions[0]['label'].toString().substring(2) +
-                            '.',
-                        style: TextStyle(color: Colors.white),
+                        'Prediction: Person in image is a ' +
+                            predictions[0]['label'].toString().substring(2),
+                        style: TextStyle(color: Colors.black),
                       ),
                       Text(
-                        'Saying that with a confidence of ' +
+                        'Accuracy: ' +
                             (predictions[0]['confidence'] * 100)
                                 .toString()
                                 .substring(0, 5) +
                             '%',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                     ],
                   )
-                : Container()
+                : Container(),
+            Row(
+              children: [
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      getFromCamera();
+                    },
+                    child: Text('Capture', style: TextStyle(fontSize: 16)),
+                    style: ElevatedButton.styleFrom(
+                        shape: StadiumBorder(), primary: Color(0xFFF23F44)),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      getFromGallery();
+                    },
+                    child: Text('Choose from Gallery',
+                        style: TextStyle(fontSize: 16)),
+                    style: ElevatedButton.styleFrom(
+                        shape: StadiumBorder(), primary: Color(0xFFF23F44)),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+              ],
+            ),
           ],
         ),
       ),

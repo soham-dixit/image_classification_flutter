@@ -1,16 +1,20 @@
-# children_vs_adult
+<h1 align="center">Classify Children and Adults using TFLite Flutter</h1>
 
-A new Flutter project.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/65973895/223166616-83b99ea6-97c5-454e-a849-987c2eaf3116.png" width="30%"></img>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://user-images.githubusercontent.com/65973895/223166767-f40f093b-3f77-4ac7-8d6e-ec48213139af.png" width="30%"></img> 
+</p>
 
-## Getting Started
+A simple TFLite app created using [Flutter](https://flutter.dev/) and dataset from [Kaggle](https://www.kaggle.com/datasets/die9origephit/children-vs-adults-images).
+## 🎯Features
+- Pick image from gallery
+- Capture image through camera
+- Displays accuracy
 
-This project is a starting point for a Flutter application.
+## 🚀How to Run
 
-A few resources to get you started if this is your first Flutter project:
+1. Run the app using flutter run command
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 📜License
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Distributed under the MIT License. See `LICENSE` for more information.
